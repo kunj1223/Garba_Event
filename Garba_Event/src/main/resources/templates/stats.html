@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org" lang="en">
+<head>
+<meta charset="ISO-8859-1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title> Statistics </title>
+</head>
+<body>
+<body>
+  <div class="jumbotron text-center" style="background-color: rgb(24, 77, 107); color:azure">
+   <h1> Statistics </h1>
+</div>
+<div class="jumbotron" style="background-color: rgba(219, 19, 19, 0.851);">
+  <div class="container" style="color: rgb(216, 223, 228)">
+    <div class="row">
+      <div class="col-sm-4">
+        <h3 th:text=" ' Maximum Ticket Price was '+ ${kk} + ' . ' " style="background-color: Green;"> Hello </h3>
+       </div>
+      <div class="col-sm-4">
+        <h3 th:text=" ' Mininum Ticket Price was '+ ${jj} + ' . ' "></h3>
+      </div>
+      <div class="col-sm-4">
+        <h3 th:text=" ' Maximum Ticket Price On Sunday was '+ ${tt} + ' . ' " style="background-color: Green;">Enjoy</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron" style="background-color: blue;">
+  <div class="container" style="color: rgb(216, 223, 228)">
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 th:text=" ' Maximum Ticket Price On Monday was '+ ${aa} + ' . ' "> Hello </h3>
+       </div>
+      <div class="col-sm-6">
+        <h3 th:text=" ' Mininum Ticket Price On Sunay was '+ ${bb} + ' . ' "></h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron text-center" style="background-color: red; color:azure"> 
+     <h3> <a href="/"> Home </a> </h3>
+  </div>
+
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title> Tickets Information </title>
+</head>
+<body>
+
+<div class="jumbotron text-center" style="background-color: rgb(24, 77, 107); color:azure">
+    <h1> Tickets Information </h1>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Day</th>
+      <th scope="col">Price</th>
+      <th scope="col">Email</th>
+      <th scope="col"> Number of People coming </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each=" t : ${tickets}" >
+      
+      <td  scope="row" th:text="${t.id}" > a </td>
+      <td th:text="${t.name}" > a </td>
+      <td th:text="${t.dayOfWeek}" > a </td>
+      <td th:text="${t.price}" > a </td>
+      <td th:text="${t.email}" > a </td>
+      <td th:text="${t.nOfPeople}" > a </td>
+      <td> <a th:href="@{/edit/{id}(id=${t.id})}"> Edit </a> </td>
+      <td> <a th:href="@{/delete/{id}(id=${t.id})}"> Delete </a> </td>
+    </tr>
+
+</tbody>
+</table>
+<div class="jumbotron text-center" style="background-color: red; color:azure">
+    <h3> <a href="/add"> Book My Ticket </a> </h3>
+    <h3> <a href="/stats"> See The Statistics </a> </h3>
+  </div>
+
+ 
+</body>
+</html>
