@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html >
+<html xmlns:th="http://www.thymeLeaf.org"
+      xmlns:sec="http://www.thymeLeaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,13 +33,20 @@
     </div>
   </div>
 </div>
-<div class="jumbotron text-center" style="background-color: rgb(112, 187, 230); color:azure">
+<div class="jumbotron text-center" style="background-color: rgb(112, 187, 230); color:azure" sec:authorize="hasRole('VENDOR')">
     <h2> Event Details </h2>
     <p> Day : Saturday, Sunday and Monday </p> 
     <p>Location : <a style="text-decoration : underline; color : blue" href="https://www.google.com/maps/place/Sheridan+College+-+Davis+Campus/@43.6559789,-79.7409238,17z/data=!3m1!4b1!4m5!3m4!1s0x882b3fbfe8f0ad5b:0xcd97e708c1197e9e!8m2!3d43.6559789!4d-79.7387351?hl=en"> Sheridan College </a> </p>
-    <p> <a href="/add"> Book My tickets</a> </p>
+    <p> <a th:href="@{/add}"> Book tickets</a> </p>
+    <p> <a href="/logout "> Sign Out </a> </p>
 </div>
 
-
+<div class="jumbotron text-center" style="background-color: rgb(112, 187, 230); color:azure" sec:authorize="hasRole('GUEST')">
+    <h2> Event Details </h2>
+    <p> Day : Saturday, Sunday and Monday </p> 
+    <p>Location : <a style="text-decoration : underline; color : blue" href="https://www.google.com/maps/place/Sheridan+College+-+Davis+Campus/@43.6559789,-79.7409238,17z/data=!3m1!4b1!4m5!3m4!1s0x882b3fbfe8f0ad5b:0xcd97e708c1197e9e!8m2!3d43.6559789!4d-79.7387351?hl=en"> Sheridan College </a> </p>
+    <p> <a th:href="@{/view}"> View tickets</a> </p>
+    <p> <a href="/logout "> Sign Out </a> </p>
+</div>
 </body>
 </html>

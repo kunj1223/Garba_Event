@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -12,12 +13,6 @@ import org.springframework.stereotype.Repository;
 
 import ca.sheridancollege.prajakun.beans.Ticket;
 import lombok.AllArgsConstructor;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 @AllArgsConstructor
 @Repository
@@ -108,8 +103,6 @@ public void editTicket(Ticket ticket) {
 	parameter.addValue("n", ticket.getNOfPeople());
 
 	jdbc.update(query,parameter);
-
-	
   }
 public void deleteTicketById(int id) {
 	
@@ -161,6 +154,8 @@ public double minTicketPrice() {
 		return 0.0;
 	}
   }
+
+
 
 public double maxTicketOnSunday() {
 	
@@ -223,6 +218,35 @@ public double minTicketPriceSunday() {
 	}
   }
 
+public ArrayList<Ticket> getGuestTicket(String name){
+	MapSqlParameterSource parameter = new MapSqlParameterSource();
+
+	String query = "SELECT * FROM tickets where name = :n";
+	parameter.addValue("n", name);
+	ArrayList<Ticket> TicketList = (ArrayList<Ticket>) jdbc.query(query, parameter, new BeanPropertyRowMapper<Ticket>(Ticket.class));
+	
+	return TicketList;
+	
+}
+
+public double getSubTotal(String name)
+{
+	MapSqlParameterSource parameter = new MapSqlParameterSource();
+	String query = "SELECT * FROM tickets WHERE NAME =:name";
+	parameter.addValue("name",name );
+	
+	ArrayList<Ticket> ticketList = (ArrayList<Ticket>) jdbc.query(query, parameter, new BeanPropertyRowMapper<Ticket>(Ticket.class));
+	System.out.println(ticketList.get(0));
+	double subtotal =0 ;		
+	int size = ticketList.size();
+	for(int i =0; i < size; i++)
+	{
+		subtotal += ticketList.get(i).getPrice();
+	}
+	
+			return subtotal;
+	
 }
 
 
+}
